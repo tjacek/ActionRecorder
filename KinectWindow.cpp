@@ -657,9 +657,9 @@ INT_PTR CALLBACK KinectWindow::handleSaveImage(_In_  HWND hwndDlg, _In_  UINT uM
 					  _In_  WPARAM wParam, 
 					  _In_  LPARAM lParam)
 {
-	/* switch (uMsg)
+	 switch (uMsg)
 	 {
-        case WM_COMMAND  :
+        /*case WM_COMMAND  :
         {
 			int wmID = LOWORD(wParam);
             int wmEvent = HIWORD(wParam);
@@ -678,13 +678,13 @@ INT_PTR CALLBACK KinectWindow::handleSaveImage(_In_  HWND hwndDlg, _In_  UINT uM
                 break;
 			}	  
         }
-        break;
+        break;*/
 		case WM_CLOSE:
         {
           DestroyWindow(hwndDlg);
         }
         break;
-	 }*/
+	 }
 
 	 return 0;
 }
