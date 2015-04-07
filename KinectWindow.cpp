@@ -653,13 +653,27 @@ void KinectWindow::OnCommand(WPARAM wParam)
     }
 }
 
+std::string getText( HWND hwnd)
+{
+    int length = SendMessage(hwnd,WM_GETTEXTLENGTH,0,0);
+    if(length == -1)
+        return "";
+    wchar_t* buffer = new wchar_t[length+1];
+    SendMessage(hwnd,WM_GETTEXT,length+1,(LPARAM)buffer);
+    std::wstring wstr(buffer);
+    delete[] buffer;
+
+    std::string s( wstr.begin(), wstr.end() );
+    return s;
+}
+
 INT_PTR CALLBACK KinectWindow::handleSaveImage(_In_  HWND hwndDlg, _In_  UINT uMsg,
 					  _In_  WPARAM wParam, 
 					  _In_  LPARAM lParam)
 {
 	 switch (uMsg)
 	 {
-        /*case WM_COMMAND  :
+        case WM_COMMAND  :
         {
 			int wmID = LOWORD(wParam);
             int wmEvent = HIWORD(wParam);
@@ -667,18 +681,17 @@ INT_PTR CALLBACK KinectWindow::handleSaveImage(_In_  HWND hwndDlg, _In_  UINT uM
             {
 				case BN_CLICKED:
                 {
-				   HWND hWndEdit= GetDlgItem(hwndDlg, IDM_FILE_NAME);
-	               wstring tmp=getText(hWndEdit);
-				   const WCHAR*  tmp2=tmp.c_str();
-				   string * str=WCHARToString(tmp2);
-				   imageFileName= str;
-
-                   m_saveImage=true;
+				   HWND filenameEdit= GetDlgItem(hwndDlg, ID_FILENAME_EDIT);
+	               std::string filename=getText(filenameEdit);
+				   HWND frameEdit= GetDlgItem(hwndDlg, ID_FRAMES_EDIT);
+	               std::string strFrames=getText(frameEdit);
+				   int numberOfFrames=atoi(strFrames.c_str());
+				   actionManager=new ActionManager(filename,numberOfFrames);
 				}
                 break;
 			}	  
         }
-        break;*/
+        break;
 		case WM_CLOSE:
         {
           DestroyWindow(hwndDlg);

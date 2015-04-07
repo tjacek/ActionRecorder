@@ -15,6 +15,9 @@
 #include "NuiAccelerometerStream.h"
 #include "NuiTiltAngleViewer.h"
 #include "KinectSettings.h"
+#include "ActionRecording.h"
+
+static ActionManager *actionManager=NULL;
 
 class KinectWindow : public NuiViewer
 {
@@ -33,6 +36,7 @@ public:
    ~KinectWindow();
 
 public:
+
     /// <summary>
     /// Start a new thread and Kinect window runs in it
     /// </summary>
@@ -245,6 +249,7 @@ private:
     static DWORD WINAPI StreamEventThread(KinectWindow* pThis);
 
 private:
+
     HINSTANCE               m_hInstance;                // Handle to application instance
     HWND                    m_hWndTab;                  // Handle to window of tab control
     HWND                    m_hWndParent;               // Handle to window of main console

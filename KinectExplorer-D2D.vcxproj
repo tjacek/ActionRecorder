@@ -156,6 +156,7 @@
     <None Include="Images\Logo.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionRecording.h" />
     <ClInclude Include="CameraColorSettingsViewer.h" />
     <ClInclude Include="CameraExposureSettingsViewer.h" />
     <ClInclude Include="CameraSettingsViewer.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ActionRecording.cpp" />
     <ClCompile Include="CameraColorSettingsViewer.cpp" />
     <ClCompile Include="CameraExposureSettingsViewer.cpp" />
     <ClCompile Include="CameraSettingsViewer.cpp" />
