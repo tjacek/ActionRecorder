@@ -409,13 +409,15 @@ void NuiImageBuffer::CopyDepth(const BYTE* pImage, UINT size, BOOL nearMode, DEP
     m_width  = m_srcWidth;
     m_height = m_srcHeight;
 
+	//delete depthFrame;
+	depthFrame=new USHORT[m_width * m_height];
     // Allocate buffer for color image. If required buffer size hasn't changed, the previously allocated buffer is returned
     UINT* rgbrun = (UINT*)ResetBuffer(m_width * m_height * BYTES_PER_PIXEL_RGB);
 
     // Initialize pixel pointers to start and end of image buffer
     NUI_DEPTH_IMAGE_PIXEL* pPixelRun = (NUI_DEPTH_IMAGE_PIXEL*)pImage;
     NUI_DEPTH_IMAGE_PIXEL* pPixelEnd = pPixelRun + m_srcWidth * m_srcHeight;
-
+	int i=0;
     // Run through pixels
     while (pPixelRun < pPixelEnd)
     {
@@ -425,7 +427,7 @@ void NuiImageBuffer::CopyDepth(const BYTE* pImage, UINT size, BOOL nearMode, DEP
 
         // Get mapped color from depth-color table
         *rgbrun = m_depthColorTable[index][depth];
-
+		depthFrame[i]=pPixelRun->depth;
         // Move the pointers to next pixel
         ++rgbrun;
         ++pPixelRun;

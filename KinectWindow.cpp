@@ -1045,6 +1045,13 @@ void KinectWindow::UpdateStreams()
     m_pColorStream->ProcessStreamFrame();
     m_pDepthStream->ProcessStreamFrame();
     m_pSkeletonStream->ProcessStreamFrame();
+	if(actionManager!=NULL){
+		actionManager->setStream(m_pDepthStream);
+		if(actionManager->addFrame()){
+			actionManager->~ActionManager();
+			actionManager=NULL;
+		}
+	}
 }
 
 /// <summary>

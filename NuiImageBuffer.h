@@ -31,6 +31,7 @@ public:
    ~NuiImageBuffer();
 
 public:
+	USHORT * depthFrame;
     /// <summary>
     /// Set image size according to image resolution
     /// </summary>
@@ -152,5 +153,6 @@ private:
     DWORD               m_srcHeight;
     DWORD               m_nSizeInBytes;
     BYTE*               m_pBuffer;
+	
     DEPTH_TREATMENT     m_depthTreatment;
 };

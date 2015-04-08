@@ -60,6 +60,7 @@ public:
     /// </summary>
     /// <param name="treatment">Depth treatment mode to set</param>
     void SetDepthTreatment(DEPTH_TREATMENT treatment);
+	NuiImageBuffer getImage();
 
 private:
     /// <summary>

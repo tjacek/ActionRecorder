@@ -113,6 +113,10 @@ void NuiDepthStream::ProcessStreamFrame()
     }
 }
 
+NuiImageBuffer NuiDepthStream::getImage(){
+  return this->m_imageBuffer;
+}
+
 /// <summary>
 /// Retrieve depth data from stream frame
 /// </summary>
