@@ -104,8 +104,10 @@ KinectWindow::KinectWindow(HINSTANCE hInstance, HWND hWndParent, INuiSensor* pNu
     m_pAccelerometerStream = new NuiAccelerometerStream(m_pNuiSensor);
 
     // Attach stream objects to viewers
-    m_pColorStream->SetStreamViewer(m_pPrimaryView);
-    m_pDepthStream->SetStreamViewer(m_pSecondaryView);
+    /*m_pColorStream->SetStreamViewer(m_pPrimaryView);
+    m_pDepthStream->SetStreamViewer(m_pSecondaryView);*/
+	m_pDepthStream->SetStreamViewer(m_pPrimaryView);
+	m_pColorStream->SetStreamViewer(m_pSecondaryView);
     m_pSkeletonStream->SetStreamViewer(m_pPrimaryView);
     m_pSkeletonStream->SetSecondStreamViewer(m_pSecondaryView);
     m_pAudioStream->SetStreamViewer(m_pAudioView);
@@ -1064,7 +1066,7 @@ DWORD KinectWindow::StreamEventThread(KinectWindow* pThis)
     HANDLE events[] = {pThis->m_hStopStreamEventThread, 
                        pThis->m_hTimer, 
                        pThis->m_pColorStream->GetFrameReadyEvent(), 
-                       pThis->m_pDepthStream->GetFrameReadyEvent(), 
+                       pThis->m_pDepthStream->GetFrameReadyEvent(),
                        pThis->m_pSkeletonStream->GetFrameReadyEvent()};
 
     while (true)

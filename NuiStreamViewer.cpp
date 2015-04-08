@@ -261,7 +261,7 @@ void NuiStreamViewer::DrawBone(const NUI_SKELETON_DATA& skeletonData, const D2D1
 /// Draw a joint of the skeleton
 /// </summary>
 /// <param name="skeletonData">Skeleton coordinates</param>
-/// <param name="imageRect">The rect which the color or depth image is streched to fit</param>
+/// <param name="imageRect">0The rect which the color or depth image is streched to fit</param>
 /// <param name="joint">Index for the joint to be drawn</param>
 void NuiStreamViewer::DrawJoint(const NUI_SKELETON_DATA& skeletonData, const D2D1_RECT_F& imageRect, NUI_SKELETON_POSITION_INDEX joint)
 {
